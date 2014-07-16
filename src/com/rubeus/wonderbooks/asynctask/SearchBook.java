@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -15,21 +14,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.app.Fragment;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.rubeus.wonderbooks.entity.Book;
 
 public class SearchBook extends AsyncTask<String, Void, String>{
 	private static final String TAG = "SearchBook";
-	private Fragment fragment;
-
-	public SearchBook(Fragment fragment){
-		this.fragment = fragment;
-	}
 	
 	@Override
 	protected String doInBackground(String... urls) {
@@ -97,12 +88,19 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 			try{
 				newBook.setPublishedDate(book.getString("publishedDate"));
 			}catch(JSONException e){}
-			
-			Toast.makeText(fragment.getView().getContext(), "Title: "+newBook.getTitle()+"\n"
-					+"Subtitle: "+newBook.getSubtitle()+"\n"
-					+"Description: "+newBook.getDescription()+"\n"
-					+"Publisher: "+newBook.getPublisher()+"\n"
-					+"Published date: "+newBook.getPublishedDate(), Toast.LENGTH_LONG).show();
+			try{
+				newBook.setAverageRating(Double.parseDouble(book.getString("averageRating")));
+			}catch(JSONException e){}
+			try{
+				newBook.setRatingCount(Integer.parseInt(book.getString("ratingsCount")));
+			}catch(JSONException e){}
+			try{
+				newBook.setInfoLink(book.getString("infoLink"));
+			}catch(JSONException e){}
+			try{ 
+			    JSONObject imageInfo = book.getJSONObject("imageLinks");
+			    newBook.setThumbnail(imageInfo.getString("smallThumbnail"));
+			}catch(JSONException e){}
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

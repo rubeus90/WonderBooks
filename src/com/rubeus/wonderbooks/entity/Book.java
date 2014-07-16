@@ -7,6 +7,10 @@ public class Book {
 	private String authors="";
 	private String publisher="";
 	private String publishedDate="";
+	private double averageRating=0;
+	private int ratingCount=0;
+	private String infoLink="";
+	private String thumbnail="";
 	
 	public String getTitle() {
 		return title;
@@ -43,5 +47,29 @@ public class Book {
 	}
 	public void setPublishedDate(String publishedDate) {
 		this.publishedDate = publishedDate;
+	}
+	public double getAverageRating() {
+		return averageRating;
+	}
+	public void setAverageRating(double averageRating) {
+		this.averageRating = averageRating;
+	}
+	public int getRatingCount() {
+		return ratingCount;
+	}
+	public void setRatingCount(int ratingCount) {
+		this.ratingCount = ratingCount;
+	}
+	public String getInfoLink() {
+		return infoLink;
+	}
+	public void setInfoLink(String infoLink) {
+		this.infoLink = infoLink;
+	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 }

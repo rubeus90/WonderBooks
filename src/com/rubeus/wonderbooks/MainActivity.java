@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-	private static final String TAG = "MainActivity";
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private CharSequence mTitle; //Used to store the last screen title. For use in {@link #restoreActionBar()}.
