@@ -1,16 +1,34 @@
 package com.rubeus.wonderbooks.entity;
 
-public class Book {
-	private String title="";
-	private String subtitle="";
-	private String description="";
-	private String authors="";
-	private String publisher="";
-	private String publishedDate="";
-	private double averageRating=0;
-	private int ratingCount=0;
-	private String infoLink="";
-	private String thumbnail="";
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Book implements Parcelable{
+	private String title;
+	private String subtitle;
+	private String description;
+	private String authors;
+	private String publisher;
+	private String publishedDate;
+	private double averageRating;
+	private int ratingCount;
+	private String infoLink;
+	private String thumbnail;
+	
+	public Book(Parcel source){
+		title = source.readString();
+		subtitle = source.readString();
+		description = source.readString();
+		authors = source.readString();
+		publisher = source.readString();
+		publishedDate = source.readString();
+		averageRating = source.readDouble();
+		ratingCount = source.readInt();
+		infoLink = source.readString();
+		thumbnail = source.readString();
+	}
+	
+	public Book(){}
 	
 	public String getTitle() {
 		return title;
@@ -72,4 +90,35 @@ public class Book {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {		
+		dest.writeString(title);
+		dest.writeString(subtitle);
+		dest.writeString(description);
+		dest.writeString(authors);
+		dest.writeString(publisher);
+		dest.writeString(publishedDate);
+		dest.writeDouble(averageRating);		
+		dest.writeInt(ratingCount);
+		dest.writeString(infoLink);
+		dest.writeString(thumbnail);
+	}
+	
+	public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {
+
+	    @Override
+	    public Book createFromParcel(Parcel source) {
+	        return new Book(source);
+	    }
+
+	    @Override
+	    public Book[] newArray(int size) {
+	        return new Book[size];
+	    }
+
+	};
 }

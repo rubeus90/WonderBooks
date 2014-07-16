@@ -17,18 +17,8 @@ import com.rubeus.wonderbooks.asynctask.SearchBook;
 
 public class ScanBookFragment extends Fragment{
 	private static final String TAG = "ScanBookFragment";
-	private static final String EXTRA_CODE = "com.rubeus.wonderbooks.code";
+	public static final int SHOW_BOOK_INFO = 1;
 	private ImageView scanBookButton;
-	
-	public static ScanBookFragment newInstance(String code){
-	    Bundle args = new Bundle();
-	    args.putSerializable(EXTRA_CODE, code);
-	 
-	    ScanBookFragment fragment = new ScanBookFragment();
-	    fragment.setArguments(args);
-	 
-	    return fragment;
-	  }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +65,7 @@ public class ScanBookFragment extends Fragment{
 				String bookSearchString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + content
 						+ "&key=" + apiKey;
 				Log.v(TAG, "Start asynctask SearchBook");
-				new SearchBook().execute(bookSearchString);
+				new SearchBook(this).execute(bookSearchString);
 			}
 		}
 	}

@@ -12,5 +12,7 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
     <string name="scan_book">Scan book</string>
+    <string name="title_activity_show_book_info">Book Infomation</string>
+    <string name="book_thumbnail">Book thumbnail</string>
 
 </resources>

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -14,13 +15,23 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.rubeus.wonderbooks.ScanBookFragment;
+import com.rubeus.wonderbooks.ShowBookInfoActivity;
 import com.rubeus.wonderbooks.entity.Book;
 
 public class SearchBook extends AsyncTask<String, Void, String>{
 	private static final String TAG = "SearchBook";
+	private Fragment fragment;
+	
+	public SearchBook(Fragment fragment){
+		this.fragment = fragment;
+	}
 	
 	@Override
 	protected String doInBackground(String... urls) {
@@ -101,6 +112,10 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 			    JSONObject imageInfo = book.getJSONObject("imageLinks");
 			    newBook.setThumbnail(imageInfo.getString("smallThumbnail"));
 			}catch(JSONException e){}
+			
+			Intent intent = new Intent(fragment.getActivity(), ShowBookInfoActivity.class);
+			intent.putExtra("book", newBook);
+			fragment.startActivityForResult(intent, ScanBookFragment.SHOW_BOOK_INFO);
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

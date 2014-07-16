@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         switch(position){
-        	case 1:
+        	case 0:
         		fragmentManager.beginTransaction()
                 .replace(R.id.container, new ScanBookFragment())
                 .commit();
