@@ -2,12 +2,14 @@
 <resources>
 
     <string name="app_name">WonderBooks</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Scan book</string>
+    <string name="title_section2">Readlist</string>
+    <string name="title_section3">Books in progress</string>
+    <string name="title_section4">Books finished</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="scan_book">Scan book</string>
 
 </resources>
