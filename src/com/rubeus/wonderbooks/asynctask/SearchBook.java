@@ -16,12 +16,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Fragment;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.rubeus.wonderbooks.entity.Book;
 
 public class SearchBook extends AsyncTask<String, Void, String>{
 	private static final String TAG = "SearchBook";
+	private Fragment fragment;
 
+	public SearchBook(Fragment fragment){
+		this.fragment = fragment;
+	}
+	
 	@Override
 	protected String doInBackground(String... urls) {
 		Log.v(TAG, "doInBackground starts");
@@ -62,21 +71,41 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 			JSONObject firstObject = resultArray.getJSONObject(0);
 			JSONObject book = firstObject.getJSONObject("volumeInfo");
 			
-			String title = book.getString("title");
-			String subtitle = book.getString("subtitle");
-			JSONArray authorsArray = book.getJSONArray("authors");
-			String authors = "";
-			for(int i=authorsArray.length(); i>0; i--){
-				if(i!=1){
-					authors += authorsArray.getString(i) + ", ";
+			Book newBook = new Book();
+			try{
+				newBook.setTitle(book.getString("title"));
+			}catch(JSONException e){}
+			try{
+				newBook.setSubtitle(book.getString("subtitle"));
+			}catch(JSONException e){}
+			try{
+				JSONArray authorsArray = book.getJSONArray("authors");
+				String authors = "";
+				for(int i=authorsArray.length(); i>0; i--){
+					if(i!=1){
+						authors += authorsArray.getString(i) + ", ";
+					}
 				}
-			}
-			String publisher = book.getString("publisher");
-			String description = book.getString("description");
-			String publishedDate = book.getString("publishedDate");
+				newBook.setAuthors(authors);
+			}catch(JSONException e){}
+			try{
+				newBook.setPublisher(book.getString("publisher"));
+			}catch(JSONException e){}
+			try{
+				newBook.setDescription(book.getString("description"));
+			}catch(JSONException e){}
+			try{
+				newBook.setPublishedDate(book.getString("publishedDate"));
+			}catch(JSONException e){}
+			
+			Toast.makeText(fragment.getView().getContext(), "Title: "+newBook.getTitle()+"\n"
+					+"Subtitle: "+newBook.getSubtitle()+"\n"
+					+"Description: "+newBook.getDescription()+"\n"
+					+"Publisher: "+newBook.getPublisher()+"\n"
+					+"Published date: "+newBook.getPublishedDate(), Toast.LENGTH_LONG).show();
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

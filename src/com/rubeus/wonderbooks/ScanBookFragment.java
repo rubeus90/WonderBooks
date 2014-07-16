@@ -75,7 +75,7 @@ public class ScanBookFragment extends Fragment{
 				String bookSearchString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + content
 						+ "&key=" + apiKey;
 				Log.v(TAG, "Start asynctask SearchBook");
-				new SearchBook().execute(bookSearchString);
+				new SearchBook(this).execute(bookSearchString);
 			}
 		}
 	}
