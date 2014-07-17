@@ -3,6 +3,7 @@ package com.rubeus.wonderbooks;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,19 +43,48 @@ public class ShowBookInfoActivity extends Activity {
 	    		title.setVisibility(View.VISIBLE);
 	    		title.setText(book.getTitle());
 	    	}
+	    	if(book.getSubtitle() != null){
+	    		subtitle.setVisibility(View.VISIBLE);
+	    		subtitle.setText(book.getSubtitle());
+	    	}
+	    	if(book.getDescription() != null){
+	    		description.setVisibility(View.VISIBLE);
+	    		description.setText("Description: " + book.getDescription());
+	    	}
+	    	if(book.getPublisher() != null){
+	    		description.setVisibility(View.VISIBLE);
+	    		description.setText("Publisher: "+ book.getPublisher());
+	    	}
+	    	if(book.getPublishedDate() != null){
+	    		publishedDate.setVisibility(View.VISIBLE);
+	    		publishedDate.setText("Published date: " + book.getPublishedDate());
+	    	}
+	    	if(book.getAverageRating() != 0.0){
+	    		rating.setVisibility(View.VISIBLE);
+	    		rating.setText("Rating: " + book.getAverageRating() + "/5");
+	    	}
+	    	if(book.getRatingCount() != 0){
+	    		ratingCount.setVisibility(View.VISIBLE);
+	    		ratingCount.setText("Rating count: " + book.getRatingCount() + "rating(s)");
+	    	}
+	    	if(book.getInfoLink() != null){
+	    		infoLink.setVisibility(View.VISIBLE);
+	    		infoLink.setText(book.getInfoLink());
+	    		Linkify.addLinks(infoLink, Linkify.ALL);
+	    	}
 	    }
 	}
 	
 	private void disableAllViews(){
-		title.setVisibility(View.INVISIBLE);
-		subtitle.setVisibility(View.INVISIBLE);
-		description.setVisibility(View.INVISIBLE);
-		publisher.setVisibility(View.INVISIBLE);
-		publishedDate.setVisibility(View.INVISIBLE);
-		rating.setVisibility(View.INVISIBLE);
-		ratingCount.setVisibility(View.INVISIBLE);
-		infoLink.setVisibility(View.INVISIBLE);
-		thumbnail.setVisibility(View.INVISIBLE);
+		title.setVisibility(View.GONE);
+		subtitle.setVisibility(View.GONE);
+		description.setVisibility(View.GONE);
+		publisher.setVisibility(View.GONE);
+		publishedDate.setVisibility(View.GONE);
+		rating.setVisibility(View.GONE);
+		ratingCount.setVisibility(View.GONE);
+		infoLink.setVisibility(View.GONE);
+		thumbnail.setVisibility(View.GONE);
 	}
 
 	@Override
