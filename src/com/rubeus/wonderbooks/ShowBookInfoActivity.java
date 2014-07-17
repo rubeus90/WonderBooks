@@ -65,7 +65,7 @@ public class ShowBookInfoActivity extends Activity {
 	    	}
 	    	if(book.getRatingCount() != 0){
 	    		ratingCount.setVisibility(View.VISIBLE);
-	    		ratingCount.setText("Rating count: " + book.getRatingCount() + "rating(s)");
+	    		ratingCount.setText("Rating count: " + book.getRatingCount() + " rating(s)");
 	    	}
 	    	if(book.getInfoLink() != null){
 	    		infoLink.setVisibility(View.VISIBLE);

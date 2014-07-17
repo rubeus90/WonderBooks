@@ -20,6 +20,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.rubeus.wonderbooks.ScanBookFragment;
 import com.rubeus.wonderbooks.ShowBookInfoActivity;
@@ -119,6 +120,7 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
+			Toast.makeText(fragment.getActivity().getApplicationContext(), "Book not found", Toast.LENGTH_SHORT).show();
 		}
 	}
 }
