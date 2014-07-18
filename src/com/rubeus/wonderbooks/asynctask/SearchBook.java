@@ -114,6 +114,7 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 			try{ 
 			    JSONObject imageInfo = book.getJSONObject("imageLinks");
 			    newBook.setThumbnail(imageInfo.getString("thumbnail"));
+			    new GetBookImage().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, newBook.getThumbnail());
 			}catch(JSONException e){}
 			try{
 				newBook.setPageCount(Integer.parseInt(book.getString("pageCount")));

@@ -3,6 +3,7 @@ package com.rubeus.wonderbooks;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -67,7 +68,7 @@ public class ScanBookFragment extends Fragment{
 					String bookSearchString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + content
 							+ "&key=" + apiKey;
 					Log.v(TAG, "Start asynctask SearchBook");
-					new SearchBook(ScanBookFragment.this, content).execute(bookSearchString);
+					new SearchBook(ScanBookFragment.this, content).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bookSearchString);
 					return true;
 				}
 				return false;
@@ -87,7 +88,7 @@ public class ScanBookFragment extends Fragment{
 				String bookSearchString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + content
 						+ "&key=" + apiKey;
 				Log.v(TAG, "Start asynctask SearchBook");
-				new SearchBook(this, content).execute(bookSearchString);
+				new SearchBook(this, content).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bookSearchString);
 			}
 		}
 	}

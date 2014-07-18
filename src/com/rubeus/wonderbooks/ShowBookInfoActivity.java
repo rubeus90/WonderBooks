@@ -2,6 +2,7 @@ package com.rubeus.wonderbooks;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.Menu;
@@ -14,7 +15,7 @@ import com.rubeus.wonderbooks.entity.Book;
 
 public class ShowBookInfoActivity extends Activity {
 	private TextView title, subtitle, description, pageCount, publisher, publishedDate, rating, ratingCount, infoLink, isbn;
-	private ImageView thumbnail;
+	private static ImageView thumbnail;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,10 @@ public class ShowBookInfoActivity extends Activity {
 	    		infoLink.setText(book.getInfoLink());
 	    		Linkify.addLinks(infoLink, Linkify.ALL);
 	    	}
+	    	
+//	    	if(book.getThumbnail() != null){
+//	    		new GetBookImage().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, book.getThumbnail());
+//	    	}
 	    }
 	}
 	
@@ -116,5 +121,10 @@ public class ShowBookInfoActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public static void setThumbnail(Bitmap bm){
+		thumbnail.setVisibility(View.VISIBLE);
+		thumbnail.setImageBitmap(bm);
 	}
 }
