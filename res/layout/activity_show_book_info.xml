@@ -30,6 +30,10 @@
 	        android:id="@+id/bookDescription"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
+	    <TextView 
+	        android:id="@+id/bookPageCount"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"/>
 	    <TextView
 	        android:id="@+id/bookPublisher"
 	        android:layout_width="wrap_content"
@@ -38,6 +42,10 @@
 	        android:id="@+id/bookPublishedDate"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
+	    <TextView 
+	        android:id="@+id/bookIsbn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"/>
 	    <TextView
 	        android:id="@+id/bookRating"
 	        android:layout_width="wrap_content"

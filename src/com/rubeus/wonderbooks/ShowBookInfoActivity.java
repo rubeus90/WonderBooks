@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.rubeus.wonderbooks.entity.Book;
 
 public class ShowBookInfoActivity extends Activity {
-	private TextView title, subtitle, description, publisher, publishedDate, rating, ratingCount, infoLink;
+	private TextView title, subtitle, description, pageCount, publisher, publishedDate, rating, ratingCount, infoLink, isbn;
 	private ImageView thumbnail;
 
 	@Override
@@ -24,8 +24,10 @@ public class ShowBookInfoActivity extends Activity {
 		title = (TextView) findViewById(R.id.bookTitle);
 		subtitle = (TextView) findViewById(R.id.bookSubtitle);
 		description = (TextView) findViewById(R.id.bookDescription);
+		pageCount = (TextView) findViewById(R.id.bookPageCount);
 		publisher = (TextView) findViewById(R.id.bookPublisher);
 		publishedDate = (TextView) findViewById(R.id.bookPublishedDate);
+		isbn = (TextView) findViewById(R.id.bookIsbn);
 		rating = (TextView) findViewById(R.id.bookRating);
 		ratingCount = (TextView) findViewById(R.id.bookRatingCount);
 		infoLink = (TextView) findViewById(R.id.bookInfoLink);
@@ -51,13 +53,21 @@ public class ShowBookInfoActivity extends Activity {
 	    		description.setVisibility(View.VISIBLE);
 	    		description.setText("Description: " + book.getDescription());
 	    	}
+	    	if(book.getPageCount() != 0){
+	    		pageCount.setVisibility(View.VISIBLE);
+	    		pageCount.setText("Pages: " + book.getPageCount() + " page(s)");
+	    	}
 	    	if(book.getPublisher() != null){
-	    		description.setVisibility(View.VISIBLE);
-	    		description.setText("Publisher: "+ book.getPublisher());
+	    		publisher.setVisibility(View.VISIBLE);
+	    		publisher.setText("Publisher: "+ book.getPublisher());
 	    	}
 	    	if(book.getPublishedDate() != null){
 	    		publishedDate.setVisibility(View.VISIBLE);
 	    		publishedDate.setText("Published date: " + book.getPublishedDate());
+	    	}
+	    	if(book.getIsbn() != null){
+	    		isbn.setVisibility(View.VISIBLE);
+	    		isbn.setText("ISBN: " + book.getIsbn());
 	    	}
 	    	if(book.getAverageRating() != 0.0){
 	    		rating.setVisibility(View.VISIBLE);
@@ -79,12 +89,14 @@ public class ShowBookInfoActivity extends Activity {
 		title.setVisibility(View.GONE);
 		subtitle.setVisibility(View.GONE);
 		description.setVisibility(View.GONE);
+		pageCount.setVisibility(View.GONE);
 		publisher.setVisibility(View.GONE);
 		publishedDate.setVisibility(View.GONE);
 		rating.setVisibility(View.GONE);
 		ratingCount.setVisibility(View.GONE);
 		infoLink.setVisibility(View.GONE);
 		thumbnail.setVisibility(View.GONE);
+		isbn.setVisibility(View.GONE);
 	}
 
 	@Override

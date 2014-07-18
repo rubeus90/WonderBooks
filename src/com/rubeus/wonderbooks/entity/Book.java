@@ -14,6 +14,8 @@ public class Book implements Parcelable{
 	private int ratingCount;
 	private String infoLink;
 	private String thumbnail;
+	private String isbn;
+	private int pageCount;
 	
 	public Book(Parcel source){
 		title = source.readString();
@@ -26,6 +28,8 @@ public class Book implements Parcelable{
 		ratingCount = source.readInt();
 		infoLink = source.readString();
 		thumbnail = source.readString();
+		isbn = source.readString();
+		pageCount = source.readInt();
 	}
 	
 	public Book(){}
@@ -90,10 +94,26 @@ public class Book implements Parcelable{
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}	
+	public int getPageCount() {
+		return pageCount;
+	}
+	public void setPageCount(int pageCount) {
+		this.pageCount = pageCount;
+	}
+	
+	
+
 	@Override
 	public int describeContents() {
 		return 0;
 	}
+
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {		
 		dest.writeString(title);
@@ -106,6 +126,8 @@ public class Book implements Parcelable{
 		dest.writeInt(ratingCount);
 		dest.writeString(infoLink);
 		dest.writeString(thumbnail);
+		dest.writeString(isbn);
+		dest.writeInt(pageCount);
 	}
 	
 	public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {

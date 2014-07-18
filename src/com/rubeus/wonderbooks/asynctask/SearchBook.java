@@ -29,9 +29,11 @@ import com.rubeus.wonderbooks.entity.Book;
 public class SearchBook extends AsyncTask<String, Void, String>{
 	private static final String TAG = "SearchBook";
 	private Fragment fragment;
+	private String isbn;
 	
-	public SearchBook(Fragment fragment){
+	public SearchBook(Fragment fragment, String isbn){
 		this.fragment = fragment;
+		this.isbn = isbn;
 	}
 	
 	@Override
@@ -54,6 +56,7 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 					    bookBuilder.append(lineIn);
 					}
 					Log.v(TAG, "doInBackground succeeded");
+					Log.v(TAG, ""+bookBuilder);
 					return bookBuilder.toString();
 				}
 			} catch (ClientProtocolException e) {
@@ -111,8 +114,13 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 			}catch(JSONException e){}
 			try{ 
 			    JSONObject imageInfo = book.getJSONObject("imageLinks");
-			    newBook.setThumbnail(imageInfo.getString("smallThumbnail"));
+			    newBook.setThumbnail(imageInfo.getString("thumbnail"));
 			}catch(JSONException e){}
+			try{
+				newBook.setPageCount(Integer.parseInt(book.getString("pageCount")));
+			}catch(JSONException e){}
+			
+			newBook.setIsbn(isbn);
 			
 			Intent intent = new Intent(fragment.getActivity(), ShowBookInfoActivity.class);
 			intent.putExtra("book", newBook);
