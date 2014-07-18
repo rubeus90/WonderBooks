@@ -10,5 +10,14 @@
         android:contentDescription="@string/scan_book"
         android:src="@drawable/ic_launcher"
         android:layout_centerInParent="true"/>
+    
+    <EditText 
+        android:id="@+id/enterISBN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+       	android:inputType="number"/>
 
 </RelativeLayout>

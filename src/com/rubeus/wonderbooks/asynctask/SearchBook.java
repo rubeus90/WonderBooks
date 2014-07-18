@@ -56,7 +56,6 @@ public class SearchBook extends AsyncTask<String, Void, String>{
 					    bookBuilder.append(lineIn);
 					}
 					Log.v(TAG, "doInBackground succeeded");
-					Log.v(TAG, ""+bookBuilder);
 					return bookBuilder.toString();
 				}
 			} catch (ClientProtocolException e) {
