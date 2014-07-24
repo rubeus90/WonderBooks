@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/bright_red" >
     
     <ImageView 
         android:id="@+id/scanBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/scan_book"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/scan_barcode"
         android:layout_centerInParent="true"/>
     
     <EditText 

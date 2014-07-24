@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Custom theme -->
+    <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>   
+        <item name="android:windowContentOverlay">@null</item>     
+        <item name="android:actionBarWidgetTheme">@style/Theme.AppTheme.actionBar.widget</item>
+        <item name="android:editTextStyle">@style/Theme.AppTheme.editText</item>
+        <item name="android:buttonStyle">@style/Theme.AppTheme.button</item>
+        <item name="android:checkboxStyle">@style/Theme.AppTheme.checkbox</item>
+        <item name="android:textViewStyle">@style/Theme.AppTheme.textView</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/bright_red</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>    
+
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    
+    <!-- ActionBar widgets (Popup menu, Drop down menu) -->
+    <style name="Theme.AppTheme.actionBar.widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/Theme.AppTheme.actionBar.PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/Theme.AppTheme.actionBar.DropDownListView</item>
+    </style>
+ 
+    <!-- Popup Menu -->
+    <style name="Theme.AppTheme.actionBar.PopupMenu" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@color/transparent_white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+ 
+    <!-- Dropdown Menu -->
+    <style name="Theme.AppTheme.actionBar.DropDownListView" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:listSelector">@color/transparent_white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    
+    
+    
+    
+    
+    <!-- Standard Widgets -->
+ 
+    <style name="Theme.AppTheme.textView" parent="android:Widget.TextView">
+    </style>
+ 
+    <style name="Theme.AppTheme.editText" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">@dimen/paddingWidget</item>
+    </style>
+ 
+    <style name="Theme.AppTheme.button" parent="android:Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/paddingWidget</item>
+ 
+    </style>
+ 
+    <style name="Theme.AppTheme.checkbox" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:padding">@dimen/paddingWidget</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+ 
+    <!-- Specialized Widgets -->
+    <style name="Theme.AppTheme.textView.field" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:padding">@dimen/paddingWidget</item>
+    </style>
+    
+</resources>
